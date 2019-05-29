@@ -42,6 +42,7 @@ def digital_to_Upper(moneystr):
             pass
         else:
             if m=='0' and n==4 and int(integer) != 0:
+            # if all([m=='0', n==4, int(integer) != 0]):
                 integer_part_list.insert(0, '万')
 
             elif m=='0' and integer[::-1][n-1] != '0':

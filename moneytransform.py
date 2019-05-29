@@ -15,7 +15,7 @@ class Ui_MoneyTransform(object):
     def setupUi(self, MoneyTransform):
         MoneyTransform.setObjectName("MoneyTransform")
         MoneyTransform.resize(351, 362)
-        MoneyTransform.setWindowIcon(QtGui.QIcon('Ulogo.png'))
+        MoneyTransform.setWindowIcon(QtGui.QIcon('logo.ico'))
         QtWidgets.QToolTip.setFont(QtGui.QFont('SansSerif', 10))
 
         self.Money_Edit = QtWidgets.QLineEdit(MoneyTransform)
@@ -49,10 +49,6 @@ class Ui_MoneyTransform(object):
         self.Quit_Btn.setGeometry(QtCore.QRect(240, 240, 71, 31))
         self.Quit_Btn.setObjectName("Quit_Btn")
 
-        self.Status_Bar = QtWidgets.QStatusBar(MoneyTransform)
-        self.Status_Bar.setGeometry(QtCore.QRect(350, 356, 6, 4))
-        self.Status_Bar.showMessage('Ready')
-
         self.retranslateUi(MoneyTransform)
         QtCore.QMetaObject.connectSlotsByName(MoneyTransform)
 
@@ -71,13 +67,13 @@ class Ui_MoneyTransform(object):
 
     # 获取输入值
     def getMoney(self):
-        money = str(self.Money_Edit.text())
+        money = str(self.Money_Edit.text()).replace(" ", "")
         if money == "":
             self.Result_Text.setText("不能为空")
         elif is_contain_chinese(money) is False:
             self.Result_Text.setText("格式有误")
         else:
-            money = money.replace(" ", "")
+            self.Money_Edit.setText(money)
             self.Result_Text.setText(digital_to_Upper(money))
 
     # 清空已输入

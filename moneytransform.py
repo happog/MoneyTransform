@@ -49,6 +49,10 @@ class Ui_MoneyTransform(object):
         self.Quit_Btn.setGeometry(QtCore.QRect(240, 240, 71, 31))
         self.Quit_Btn.setObjectName("Quit_Btn")
 
+        self.Status_Bar = QtWidgets.QStatusBar(MoneyTransform)
+        self.Status_Bar.setGeometry(QtCore.QRect(350, 356, 6, 4))
+        self.Status_Bar.showMessage('Ready')
+
         self.retranslateUi(MoneyTransform)
         QtCore.QMetaObject.connectSlotsByName(MoneyTransform)
 
@@ -64,6 +68,7 @@ class Ui_MoneyTransform(object):
         self.Clear_Btn.clicked.connect(lambda: self.clearMoney())
         self.Transform_Btn.clicked.connect(lambda: self.getMoney())
 
+
     # 获取输入值
     def getMoney(self):
         money = str(self.Money_Edit.text())
@@ -74,7 +79,6 @@ class Ui_MoneyTransform(object):
         else:
             money = money.replace(" ", "")
             self.Result_Text.setText(digital_to_Upper(money))
-
 
     # 清空已输入
     def clearMoney(self):
